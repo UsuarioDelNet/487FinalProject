@@ -1,5 +1,5 @@
-# CPE 487 Final Project
-
+# CPE 487 Final Project: Frogger
+![image](https://github.com/user-attachments/assets/0385a71c-9e93-42b2-8d4e-b9d27be4b676)
 ## Expected Behavior
 The program aims to mimic the behavior of a typical game of Frogger, with some additional modifications. 
 - The frog starts at the bottom center of the screen.
