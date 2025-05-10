@@ -9,3 +9,10 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - The frog “dies” if it collides with a car or the lake and the game must be reset.
 - There are three coins that the frog can choose to collect along the way to the finish.
 - Collecting coins increases the score, which is displayed in binary on the board.
+
+## Necessary Hardware
+- Nexys A7-100T FPGA Board
+- Computer with a USB port and Vivado installed.
+- Micro-USB to USB Cable
+- VGA Cable
+- Monitor with VGA port or VGA adapter
