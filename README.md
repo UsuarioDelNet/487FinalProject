@@ -16,3 +16,12 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - Micro-USB to USB Cable
 - VGA Cable
 - Monitor with VGA port or VGA adapter
+
+## Project Setup Instructions
+1. Connect the Nexys A7-100T FPGA board to the computer with Vivado installed via the Micro-USB to USB cable, using an adapter if necessary.
+2. Connect the monitor to the board using the VGA cable, using adapters if necessary.
+3. Ensure that the board is switched on.
+4. Download the files on this GitHub repository.
+5. Open Vivado and create a new RTL project. On the "Add Sources" page, add all of the downloaded .vhd files. On the "Add Constraints" page, and add all of the downloaded .xdc files. On the "Default Part" page, select "Nexys A7-100T" under “Boards”.
+6. Once the project has been created, run synthesis, implementation, and generate the bitstream.
+7. Open the Hardware Manager and program the board. The game should now appear on the monitor.
