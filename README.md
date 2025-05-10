@@ -1,6 +1,6 @@
 # CPE 487 Final Project
 
-# Expected Behavior
+## Expected Behavior
 - The frog starts at the bottom center of the screen.
 - The frog can move in four directions and must get to the other end of the screen to win, avoiding obstacles along the way.
 - The cars are moving obstacles that are in fixed vertical positions on the screen and move horizontally at a set speed.
