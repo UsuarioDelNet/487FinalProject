@@ -24,6 +24,14 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - There are three coins that the frog can choose to collect along the way to the finish.
 - Collecting coins increases the score, which is displayed in binary on the board.
 
+<p align="center">
+  <img src="https://github.com/UsuarioDelNet/487FinalProject/blob/main/FinalProjectReferences/frogger_fail_car.gif" alt="frogg_fail">
+</p>
+
+<p align="center">
+  <img src="https://github.com/UsuarioDelNet/487FinalProject/blob/main/FinalProjectReferences/frogger_coin.gif" alt="frogg_coin">
+</p>
+
 <h2 id="2">Necessary Hardware</h2>
 
 - Nexys A7-100T FPGA Board
