@@ -1,7 +1,7 @@
 # CPE 487 Final Project: Frogger
 ![frogg.jpg](https://github.com/user-attachments/assets/0385a71c-9e93-42b2-8d4e-b9d27be4b676)
 <p align="center">
-  <img src="https://github.com/UsuarioDelNet/487FinalProject/blob/main/frogger_success.gif" />
+  <img src="https://github.com/UsuarioDelNet/487FinalProject/blob/main/487FinalProject/FinalProjectReferences/frogger_success.gif" />
 </p>
 
 ## Table of Contents
@@ -52,10 +52,10 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - This is the supporting module for clk_wiz_0 that contains the actual clock generation logic, also unmodified.
 
 ### enemy_data.vhd: 
-- A code from the Subway Surfers project, removed because it served no purpose and was not referenced anywhere.
+- A code from the Crossy Roads project, removed because it served no purpose and was not referenced anywhere.
 
 ### enemy_package.vhd: 
-- Another code from the original Subway Surfers project.
+- Another code from the original Crossy Roads project.
 - Rather than a module in the heiarchy, it is a package file used to define the coordinates, velocity, and position of the cars as well as certain cars speeding up more.
 - However, this package is never referenced or declared in the project.
 
