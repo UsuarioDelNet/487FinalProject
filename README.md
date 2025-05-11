@@ -38,11 +38,11 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 6. Once the project has been created, run synthesis, implementation, and generate the bitstream.
 7. Open the Hardware Manager and program the board. The game should now appear on the monitor.
 
-<h2 id="3">Modules and Ports</h2>
+<h2 id="4">Modules and Ports</h2>
 
 ### clk_wiz_0.vhd: 
 - This generates the clock signals for the system, but it was unmodified.
-- Takes the FPGA’s input clock and generates a 25 MHz clock for the VGA sync module.
+- The VGA_Top module takes the FPGA’s input clock and generates a 25 MHz clock for the VGA_Sync module.
 
 ### clk_wiz_0_clk_wiz.vhd:
 - This is the supporting module for clk_wiz_0 that contains the actual clock generation logic, also unmodified.
@@ -54,23 +54,24 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - Another code from the Subway Surfers project that we removed, it was the logic for the cars but outdated and unused.
 
 ### frog.vhd:
-The most utilized file in the project, it contained:
-- Color logic. Frog.vdh processed all the entities and gave them each a color.
+The most utilized module in the project, it contained:
+- Color logic. Frog.vdh processed all the entities and gave them each a color. It made the frog green, the cars red, the river blue, and the coins yellow.
 - Frog logic. Frog.vdh both created our frog as well as controlled its movement and state of survival (alive or dead).
-- Car drawing logic. Frog.vhd similarly created the cars, and it controlled their horizontal movements and determined whether a collision with the frog occured.
-- River drawing logic. Frog.vhd
-Coin drawing logic
-Everything drawing logic
-Score logic
-Collision detection (for car, river, coin)
-Whatever other game logic
+- Car drawing logic. Frog.vhd similarly created the cars, and it controlled their horizontal movements and gave them a collision hitbox.
+- River drawing logic. Frog.vhd created the river and gave it a similar collision hitbox to the cars.
+- Coin drawing logic. Frog.vhd created the coins and gave them a hitbox. 
+- Collision detection (for car, river, coin). If the frog's hitbox collided with a car or the river, it would change its state to dead and disappear, ending the game. Similarly, the frog could collide with a coin and that would make the coin disappear.
+- Score logic. If the frog collided with the coin and it disappeared, then the score counter would increase by 1. Then, frog.vhd sends the score to the VGA_Top module to export it to the board LEDs.
 
 ### frogger.xdc:
-leddec.vhd:
+
+### leddec.vhd:
 For LED segments
-vga_sync.vhd:
+
+### vga_sync.vhd:
 I think this is just video resolution
-vga_top.vhd:
+
+### vga_top.vhd:
 Top level module
 
 
