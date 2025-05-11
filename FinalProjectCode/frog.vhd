@@ -13,9 +13,9 @@ ENTITY frog IS
 		blue      : OUT STD_LOGIC;
 		up        : IN STD_LOGIC;
 		down      : IN STD_LOGIC;
-	    left      : IN STD_LOGIC;
-	    right     : IN STD_LOGIC;
-	    reset     : IN STD_LOGIC;
+	   	left      : IN STD_LOGIC;
+	 	right     : IN STD_LOGIC;
+                reset     : IN STD_LOGIC;
 		score 	  : OUT STD_LOGIC_VECTOR (1 DOWNTO 0)
 	);
 END frog;
@@ -76,14 +76,13 @@ ARCHITECTURE Behavioral OF frog IS
 	SIGNAL car5_x_motion : STD_LOGIC_VECTOR(10 DOWNTO 0) := "00000001101";	
 	
 	SIGNAL river_w : INTEGER := 390; -- bat width in pixels
-    CONSTANT river_h : INTEGER := 8; -- bat height in pixels
+        CONSTANT river_h : INTEGER := 8; -- bat height in pixels
 	SIGNAL Rriver_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(410, 11);
 	SIGNAL Rriver_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(250, 11);
 	SIGNAL Rriver_on : STD_LOGIC;
-
-    SIGNAL Lriver_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(20, 11);
+        SIGNAL Lriver_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(20, 11);
 	SIGNAL Lriver_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(250, 11);
-    SIGNAL Lriver_on : STD_LOGIC;
+        SIGNAL Lriver_on : STD_LOGIC;
 	
 --	SIGNAL s_score : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
 --	SIGNAL score_incr : STD_LOGIC_VECTOR(1 DOWNTO 0) := "01";
@@ -94,16 +93,16 @@ ARCHITECTURE Behavioral OF frog IS
 	CONSTANT coin_size : INTEGER := 10;
 	SIGNAL coin1_on : STD_LOGIC := '0';
 	SIGNAL coin1_off : STD_LOGIC := '1';
-    SIGNAL coin1_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(400, 11);
-    SIGNAL coin1_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(350, 11);
-    SIGNAL coin2_on : STD_LOGIC := '0';
+        SIGNAL coin1_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(400, 11);
+    	SIGNAL coin1_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(350, 11);
+    	SIGNAL coin2_on : STD_LOGIC := '0';
 	SIGNAL coin2_off : STD_LOGIC := '1';
-    SIGNAL coin2_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(230, 11);
-    SIGNAL coin2_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(200, 11);
-    SIGNAL coin3_on : STD_LOGIC := '0';
+    	SIGNAL coin2_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(230, 11);
+    	SIGNAL coin2_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(200, 11);
+    	SIGNAL coin3_on : STD_LOGIC := '0';
 	SIGNAL coin3_off : STD_LOGIC := '1';
-    SIGNAL coin3_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(575, 11);
-    SIGNAL coin3_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(160, 11);
+    	SIGNAL coin3_x  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(575, 11);
+    	SIGNAL coin3_y  : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(160, 11);
     
 
 
@@ -143,8 +142,8 @@ BEGIN
 			frog_on <= '0';
 		END IF;
 		END IF;
-		END IF;
-		END PROCESS;
+	END IF;
+	END PROCESS;
 		
 	-- process to move frog once every frame (i.e. once every vsync pulse)
 	mfrog : PROCESS
