@@ -104,7 +104,7 @@ The most utilized module in the project, it contained:
 #### Colors
 - The red, blue, and green signals were changed from 3-bit and 2-bit vectors to 4-bit vectors in line with the color signals in the pong lab.
 - The structure of the color declarations were changed -- in the prior code both OR and NOT OR declarations were used, whereas now only OR declarations are used.
-- Frog color was changed from black to green
+- Frog color was changed from black to green.
 - Background color was changed from green to black.
 - Coin color was set to yellow (red and green).
 - River color was set to blue.
