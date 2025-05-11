@@ -55,7 +55,9 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - A code from the Subway Surfers project, removed because it served no purpose and was not referenced anywhere.
 
 ### enemy_package.vhd: 
-- Another code from the Subway Surfers project that we removed, it was the logic for the cars but outdated and unused.
+- Another code from the original Subway Surfers project.
+- Rather than a module in the heiarchy, it is a package file used to define the coordinates, velocity, and position of the cars as well as certain cars speeding up more.
+- However, this package is never referenced or declared in the project.
 
 ### frog.vhd:
 The most utilized module in the project, it contained:
@@ -68,16 +70,19 @@ The most utilized module in the project, it contained:
 - Score logic. If the frog collided with the coin and it disappeared, then the score counter would increase by 1. Then, frog.vhd sends the score to the VGA_Top module to export it to the board LEDs.
 
 ### frogger.xdc:
+- This is where the pins for the buttons, vga, and anodes are declared.
 
 ### leddec.vhd:
-For LED segments
+- This is the module that controls the board anodes.
+- It accepts the score from VGA_Top and outputs it to the board.
+- It turns on anode 0 and turns off anodes 1-7.
 
 ### vga_sync.vhd:
-I think this is just video resolution
+- This is the standard vga_sync from the labs, made to set colors and video resolution.
 
 ### vga_top.vhd:
-Top level module
-
+- This is the top level module. It acts as an intermediary for the score between frog.vhd and leddec.vhd.
+- It generates the 25 MHz clock that we use from 50 MHz system clock.
 
 <h2 id="5">Modifications</h2>
 
