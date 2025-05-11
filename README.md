@@ -10,7 +10,7 @@
 - [Project Setup Instructions](#3)
 - [Modules and Ports](#4)
 - [Modifications](#5)
-- [Division of Labor](#6)
+- [Summary and Conclusion](#6)
 
 
 <h2 id="1">Expected Behavior</h2>
@@ -145,4 +145,4 @@ The most utilized module in the project, it contained:
 - The score vector was added to the frog entity in order to send it to the leddec file properly.
 - Due to the code using a custom 25 MHz clock, the original code that used the automatically generated clk_wiz and clk_wiz_0 was commented out. 
 
-<h2 id="6">Division of Labor</h2>
+<h2 id="6">Summary and Conclusion</h2>
