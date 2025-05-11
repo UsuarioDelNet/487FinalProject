@@ -6,9 +6,11 @@
 - [Project Setup Instructions](#3)
 - [Modifications](#4)
 - [Division of Labor](#5)
-  
+
+
 <h2 id="1">Expected Behavior</h2>
 The program aims to mimic the behavior of a typical game of Frogger, with some additional modifications. 
+
 - The frog starts at the bottom center of the screen.
 - The frog can move in four directions and must get to the other end of the screen to win, avoiding obstacles along the way.
 - The cars are moving obstacles that are in fixed vertical positions on the screen and move horizontally at a set speed that is slightly faster than the frog.
@@ -18,6 +20,7 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - Collecting coins increases the score, which is displayed in binary on the board.
 
 <h2 id="2">Necessary Hardware</h2>
+
 - Nexys A7-100T FPGA Board
 - Computer with a USB port and Vivado installed.
 - Micro-USB to USB Cable
@@ -25,6 +28,7 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 - Monitor with VGA port or VGA adapter
 
 <h2 id="3">Project Setup Instructions</h2>
+
 1. Connect the Nexys A7-100T FPGA board to the computer with Vivado installed via the Micro-USB to USB cable, using an adapter if necessary.
 2. Connect the monitor to the board using the VGA cable, using adapters if necessary.
 3. Ensure that the board is switched on.
