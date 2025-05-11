@@ -1,5 +1,9 @@
 # CPE 487 Final Project: Frogger
 ![frogg.jpg](https://github.com/user-attachments/assets/0385a71c-9e93-42b2-8d4e-b9d27be4b676)
+<p align="center">
+  <img src="https://github.com/UsuarioDelNet/487FinalProject/blob/main/frogger_success.gif" />
+</p>
+
 ## Table of Contents
 - [Expected Behavior](#1)
 - [Necessary Hardware](#2)
