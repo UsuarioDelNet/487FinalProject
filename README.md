@@ -119,13 +119,15 @@ The most utilized module in the project, it contained:
 #### River
 - The river was added as an entity with similar x and y signals to the cars as another obstacle for the frog.
 - The signals river_w and river_h were added as constants to act as the width and height for the river, and to act as the space where the river hitbox registers.
-- It was given the same hitbox as the cars, and the code to implement it as a rectangle was inspired by the bat from the pong lab.
+- The river was given the same hitbox as the cars.
+- The code to implement it as a rectangle was inspired by the bat from the pong lab.
 
 #### Coin
-- The coins were added as a beneficial entity using similar x and y signals to the cars, as well as similar hitbox rendering.
+- The coins were added as a beneficial entity using similar x and y signals to the cars, as well as similar hitbox rendering. 
 - The signals coin_off and coin_on were added, with one for each coin. Within their individual processes, the coin_on is used to draw the coin, and coin_off is used as a check in order to prevent the coins from respawning before the reset button is hit.
 - If the coin hitbox registers a collision the coin_off changes from 1 to 0 to indicate the coin turns off, and the respective s_score changes to 01.
 - When direction = 8, the respective coin_off returns to 1 and s_score changes to 00.
+- The code to implement them as circles was inspired by lab 3.
 
 ### frogger.xdc:
 - Because the 3 color signals went from 3-bit to 4-bit, the appropriate VGA pins had to be registered.
