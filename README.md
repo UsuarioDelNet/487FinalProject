@@ -118,7 +118,7 @@ The most utilized module in the project, it contained:
 
 #### River
 - The river was added as an entity with similar x and y signals to the cars as another obstacle for the frog.
-- The signals river_w and river_h were added as constants to act as the width and height for the river, and to act as the space where the river hitbox is.
+- The signals river_w and river_h were added as constants to act as the width and height for the river, and to act as the space where the river hitbox registers.
 - It was given the same hitbox as the cars, and the code to implement it as a rectangle was inspired by the bat from the pong lab.
 
 #### Coin
