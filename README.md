@@ -5,7 +5,8 @@
 - [Necessary Hardware](#2)
 - [Project Setup Instructions](#3)
 - [Modifications](#4)
-
+- [Division of Labor](#5)
+  
 <h2 id="1">Expected Behavior</h2>
 The program aims to mimic the behavior of a typical game of Frogger, with some additional modifications. 
 - The frog starts at the bottom center of the screen.
@@ -34,3 +35,4 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 
 <h2 id="4">Modifications</h2>
 
+<h2 id="5">Division of Labor</h2>
