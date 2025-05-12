@@ -101,7 +101,7 @@ To build this project, we used Labs 3 and 6 as well astwo previous projects—[C
 - The 3 new `s_score` signals were summed and score was set to their value, and sent to the VGA_Top file.
 
 #### Colors
-- The red, blue, and green signals were changed from 3-bit and 2-bit vectors to 4-bit vectors in line with the color signals in the pong lab.
+- The `red`, `blue`, and `green` signals were changed from 3-bit and 2-bit vectors to 4-bit vectors in line with the color signals in the pong lab.
 - The structure of the color declarations were changed; in the prior code both OR and NOT OR declarations were used, whereas now only OR declarations are used.
 - Frog color was changed from black to green.
 - Background color was changed from green to black.
@@ -172,11 +172,8 @@ To build this project, we used Labs 3 and 6 as well astwo previous projects—[C
     - This was fixed by changing the "reset" state direction number to 8, though any higher number would have also worked.
 2. Errors in bitstream generation
    - When compiling the project through Vivado, the code would make it through synthesis and implementation, but failed to write to the bitstream.
-   - This failure was caused by errors in the vga_sync file.
-   - This was fixed by 
+   - This failure was caused by errors with the color and the clock.
+   - This was fixed by first editing the frogger.xdc file to make sure all the colors were properly declared, and deleting the initial clock function in order to use the custom 25 MHz clock to bypass all the persistent clock issues.
 3. River collision detection
    - The frog would only "die" when hitting specific parts of the river instead of any part of it.
    - This was fixed by properly rendering the river's hitbox, as it had overflowed due to a negative position.
-4. Bitstream errors
-   - The bitstream would not compile due to assorted errors with the color and the clock.
-   - This was fixed by first editing the frogger.xdc file to make sure all the colors were properly declared, and deleting the initial clock function in order to use the custom 25 MHz clock to bypass all the persistent clock issues.
