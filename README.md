@@ -161,7 +161,7 @@ To build this project, we used Labs 3 and 6 as well astwo previous projects—[C
 
 - Coin drawing, positioning, and logic
 - Score logic
-- Lake positioning and collision logic
+- river positioning and collision logic
 - Debugging
 
 **Issues and Fixes**
@@ -174,7 +174,7 @@ To build this project, we used Labs 3 and 6 as well astwo previous projects—[C
    - When compiling the project through Vivado, the code would make it through synthesis and implementation, but failed to write to the bitstream.
    - This failure was caused by errors in the vga_sync file.
    - This was fixed by 
-5. Lake collision detection
-   - The frog would only "die" when hitting specific parts of the lake instead of any part of it.
-   - This was fixed by expanding the lake's hitbox.
+5. river collision detection
+   - The frog would only "die" when hitting specific parts of the river instead of any part of it.
+   - This was fixed by expanding the river's hitbox.
 
