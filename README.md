@@ -59,9 +59,6 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 ### clk_wiz_0_clk_wiz.vhd:
 - This is the supporting module for clk_wiz_0 that contains the actual clock generation logic, also unmodified.
 
-### enemy_data.vhd: 
-- A code from the Crossy Roads project, removed because it served no purpose and was not referenced anywhere.
-
 ### enemy_package.vhd: 
 - Another code from the original Crossy Roads project.
 - Rather than a module in the heiarchy, it is a package file used to define the coordinates, velocity, and position of the cars as well as certain cars speeding up more.
@@ -69,13 +66,13 @@ The program aims to mimic the behavior of a typical game of Frogger, with some a
 
 ### frog.vhd:
 The most utilized module in the project, it contained:
-- Color logic. Frog.vdh processed all the entities and gave them each a color. It made the frog green, the cars red, the river blue, and the coins yellow.
-- Frog logic. Frog.vdh both created our frog as well as controlled its movement and state of survival (alive or dead).
-- Car drawing logic. Frog.vhd similarly created the cars, and it controlled their horizontal movements and gave them a collision hitbox.
-- River drawing logic. Frog.vhd created the river and gave it a similar collision hitbox to the cars.
-- Coin drawing logic. Frog.vhd created the coins and gave them a hitbox. 
-- Collision detection (for car, river, coin). If the frog's hitbox collided with a car or the river, it would change its state to dead and disappear, ending the game. Similarly, the frog could collide with a coin and that would make the coin disappear.
-- Score logic. If the frog collided with the coin and it disappeared, then the score counter would increase by 1. Then, frog.vhd sends the score to the VGA_Top module to export it to the board LEDs.
+- **Color logic:** processed all the entities and gave them each a color. It made the frog green, the cars red, the river blue, and the coins yellow.
+- **Frog logic:** created the frog as well as controlled its movement and state of survival (alive or dead).
+- **Car drawing logic:** created the cars, controlled their horizontal movements, and gave them a collision hitbox.
+- **River drawing logic:** created the river and gave it a similar collision hitbox to the cars.
+- **Coin drawing logic:** created the coins and gave them a hitbox. 
+- **Collision detection:** If the frog's hitbox collided with a car or the river, it would change its state to dead and disappear, ending the game. Similarly, the frog could collide with a coin and that would make the coin disappear.
+- **Score logic:** If the frog collided with the coin and it disappeared, then the score counter would increase by 1. Then, frog.vhd sends the score to the VGA_Top module to export it to the board LEDs.
 
 ### frogger.xdc:
 - This is where the pins for the buttons, vga, and anodes are declared.
@@ -94,57 +91,90 @@ The most utilized module in the project, it contained:
 
 <h2 id="5">Modifications</h2>
 
+To build this project, we used Labs 3 and 6 as well astwo previous projects—[Crossy Road](https://github.com/alex-waldron/CPE487/tree/main/FinalProject) and [Subway Surfers](https://github.com/ryanvconnolly/CPE487finalproject/blob/main/README.md)—as a base for our code. We made the following modifications:
+
 ### frog.vhd:
 #### Score
 - To change the score from a timer to a coin counter, the score vector was reduced from a 16-bit into a 2-bit vector that only counts up to 3.
-- The s_score and score_incr used to increment the timer were removed, as well as the points in which they were used,
-- The signals s_score1, s_score2, and s_score3 were added that each begin at 00, and change to 01 when a collision between their respective coin and the frog is registered.
-- The 3 new s_score signals were summed and score was set to their value, and sent to the VGA_Top file.
+- The `s_score` and `score_incr` signals were used to increment the timer were removed, as well as the points in which they were used,
+- The signals `s_score1`, `s_score2`, and `s_score3` were added that each begin at `00`, and change to `01` when a collision between their respective coin and the frog is registered.
+- The 3 new `s_score` signals were summed and score was set to their value, and sent to the VGA_Top file.
 
 #### Colors
 - The red, blue, and green signals were changed from 3-bit and 2-bit vectors to 4-bit vectors in line with the color signals in the pong lab.
-- The structure of the color declarations were changed -- in the prior code both OR and NOT OR declarations were used, whereas now only OR declarations are used.
+- The structure of the color declarations were changed; in the prior code both OR and NOT OR declarations were used, whereas now only OR declarations are used.
 - Frog color was changed from black to green.
 - Background color was changed from green to black.
 - Coin color was set to yellow (red and green).
 - River color was set to blue.
 
 #### Frog
-- To make the game more difficult, the frog's movement speed was changed from 4 pixels per frame (00000000100) to 2 pixels per frame (00000000010).
-- The frog button detection code was edited. Prior, the value of direction was an integer determined by which buttons had been pressed, but due to an error in code if BTNR (direction = 4) and BTNU (direction = 1) were pressed at the same time then it would registed direction as 5, the same as BTNC, which would reset the coins and score. The direction value for BTNC was set to 8.  
+- To make the game more difficult, the frog's movement speed was changed from 4 pixels per frame (`00000000100`) to 2 pixels per frame (`00000000010`).
 
 #### Car
 - The vertical positions of the cars were slightly moved to make space for the river.
 
 #### River
 - The river was added as an entity with similar x and y signals to the cars as another obstacle for the frog.
-- The signals river_w and river_h were added as constants to act as the width and height for the river, and to act as the space where the river hitbox registers.
+- The signals `river_w` and `river_h` were added as constants to act as the width and height for the river, and to act as the space where the river hitbox registers.
 - The river was given the same hitbox as the cars.
 - The code to implement it as a rectangle was inspired by the bat from the pong lab.
 
 #### Coin
 - The coins were added as a beneficial entity using similar x and y signals to the cars, as well as similar hitbox rendering. 
-- The signals coin_off and coin_on were added, with one for each coin. Within their individual processes, the coin_on is used to draw the coin, and coin_off is used as a check in order to prevent the coins from respawning before the reset button is hit.
-- If the coin hitbox registers a collision the coin_off changes from 1 to 0 to indicate the coin turns off, and the respective s_score changes to 01.
-- When direction = 8, the respective coin_off returns to 1 and s_score changes to 00.
+- The signals `coin_off` and `coin_on` were added, with one for each coin. Within their individual processes, the `coin_on` is used to draw the coin, and `coin_off` is used as a check in order to prevent the coins from respawning before the reset button is hit.
+- If the coin hitbox registers a collision the `coin_off` changes from `1` to `0` to indicate the coin turns off, and the respective `s_score` changes to `01`.
+- When `direction = 8`, the respective `coin_off` returns to `1` and `s_score` changes to `00`.
 - The code to implement them as circles was inspired by lab 3.
 
 ### frogger.xdc:
-- Because the 3 color signals went from 3-bit to 4-bit, the appropriate VGA pins had to be registered.
+- Because the 3 `color` signals went from 3-bit to 4-bit, the appropriate VGA pins had to be registered.
 - Because of issues with the board LEDs, all the LED pins had to be registered in order for the leddec module to turn them off.
 
 ### leddec.vhd:
-- The vector f_data that reads the score was changed from 16-bit to 2-bit.
-- The seg segments that could activate were only set from 1 to 3 due to no numbers of 3-bit or above possible for the code.
-- Anode was changed to only accept one string -- 1111110, in order to turn off all the LEDs on the board save for the rightmost LED, anode 0.
+- The vector `f_data` that reads the score was changed from 16-bit to 2-bit.
+- The `seg` segments that could activate were only set from 1 to 3 due to no numbers of 3-bit or above possible for the code.
+- `anode` was changed to only accept one string -- `1111110`, in order to turn off all the LEDs on the board save for the rightmost LED, anode 0.
 
 ### vga_sync.vhd:
-- The red, blue, and green signals were changed from 3-bit and 2-bit vectors to 4-bit vectors in line with the color signals in the pong lab.
-- The code was changed from the version used in the Crossy Roads code to the version used by the pong lab, as the prior code didn't support 4-bit color vectors. 
+- The `red`, `blue`, and `green` signals were changed from 3-bit and 2-bit vectors to 4-bit vectors to be in line with the color signals in the pong lab.
+- The code was changed from the version used in the Crossy Road code to the version used by the pong lab, as the prior code didn't support 4-bit color vectors. 
 
 ### vga_top.vhd:
-- The red, blue, and green signals were changed from 3-bit and 2-bit vectors to 4-bit vectors in line with the color signals in the pong lab.
-- The score vector was added to the frog entity in order to send it to the leddec file properly.
-- Due to the code using a custom 25 MHz clock, the original code that used the automatically generated clk_wiz and clk_wiz_0 was commented out. 
+- The `red`, `blue`, and `green` signals were changed from 3-bit and 2-bit vectors to 4-bit vectors to be in line with the color signals in the pong lab.
+- The `score` vector was added to the `frog` entity in order to send it to the leddec file properly.
+- Due to the code using a custom 25 MHz clock, the original code that used the automatically generated clk_wiz and clk_wiz_0 was commented out.
+
+### enemy_data.vhd: 
+- A file from the Crossy Roads project, removed from the repository because it served no purpose and was not referenced anywhere.
 
 <h2 id="6">Summary and Conclusion</h2>
+
+**Daniel**
+
+- Frog drawing, positioning, and logic
+- Color logic
+- Clock and collision logic debugging
+- Car modifications
+
+**Rae**
+
+- Coin drawing, positioning, and logic
+- Score logic
+- Lake positioning and collision logic
+- Debugging
+
+**Issues and Fixes**
+
+1. Coins respawning
+    - Coins would unintentionally respawn when the player moved up and to the right simultaneously.
+    - This error was caused by the direction logic within the code: each direction was assigned a number from 1 to 4, and the "reset" state was assigned a direction of 5. When the player would move up and to the right, the directions 1 and 4 were triggered simultaneously, making 5 and forcing the game into a state where it thought the board reset.
+    - This was fixed by changing the "reset" state direction number to 8, though any higher number would have also worked.
+3. Errors in bitstream generation
+   - When compiling the project through Vivado, the code would make it through synthesis and implementation, but failed to write to the bitstream.
+   - This failure was caused by errors in the vga_sync file.
+   - This was fixed by 
+5. Lake collision detection
+   - The frog would only "die" when hitting specific parts of the lake instead of any part of it.
+   - This was fixed by expanding the lake's hitbox.
+
