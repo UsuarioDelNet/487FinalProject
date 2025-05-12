@@ -91,7 +91,7 @@ The most utilized module in the project, it contained:
 
 <h2 id="5">Modifications</h2>
 
-To build this project, we used Labs 3 and 6 as well astwo previous projects—[Crossy Road](https://github.com/alex-waldron/CPE487/tree/main/FinalProject) and [Subway Surfers](https://github.com/ryanvconnolly/CPE487finalproject/blob/main/README.md)—as a base for our code. We made the following modifications:
+To build this project, we used Labs 3 and 6 as well as two previous projects—[Crossy Road](https://github.com/alex-waldron/CPE487/tree/main/FinalProject) and [Subway Surfers](https://github.com/ryanvconnolly/CPE487finalproject/blob/main/README.md)—as a base for our code. We made the following modifications:
 
 ### frog.vhd:
 #### Score
