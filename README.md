@@ -161,7 +161,7 @@ To build this project, we used Labs 3 and 6 as well astwo previous projects—[C
 
 - Coin drawing, positioning, and logic
 - Score logic
-- river positioning and collision logic
+- River positioning and collision logic
 - Debugging
 
 **Issues and Fixes**
@@ -170,11 +170,13 @@ To build this project, we used Labs 3 and 6 as well astwo previous projects—[C
     - Coins would unintentionally respawn when the player moved up and to the right simultaneously.
     - This error was caused by the direction logic within the code: each direction was assigned a number from 1 to 4, and the "reset" state was assigned a direction of 5. When the player would move up and to the right, the directions 1 and 4 were triggered simultaneously, making 5 and forcing the game into a state where it thought the board reset.
     - This was fixed by changing the "reset" state direction number to 8, though any higher number would have also worked.
-3. Errors in bitstream generation
+2. Errors in bitstream generation
    - When compiling the project through Vivado, the code would make it through synthesis and implementation, but failed to write to the bitstream.
    - This failure was caused by errors in the vga_sync file.
    - This was fixed by 
-5. river collision detection
+3. River collision detection
    - The frog would only "die" when hitting specific parts of the river instead of any part of it.
-   - This was fixed by expanding the river's hitbox.
-
+   - This was fixed by properly rendering the river's hitbox, as it had overflowed due to a negative position.
+4. Bitstream errors
+   - The bitstream would not compile due to assorted errors with the color and the clock.
+   - This was fixed by first editing the frogger.xdc file to make sure all the colors were properly declared, and deleting the initial clock function in order to use the custom 25 MHz clock to bypass all the persistent clock issues.
